@@ -5,13 +5,11 @@ let Track = Backbone.Model.extend({
         name:'',
         description:'',
         by:''
-    }
-})
+    },
+});
 
 //Backbone Collection is a an [] of Models
-let Playlists = Backbone.Collection.extend({
-
-});
+let Playlists = Backbone.Collection.extend({});
 
 //instantiate 2 tracks
 
@@ -39,10 +37,11 @@ let TrackView = Backbone.View.extend({
     model: new Track(),
     tagName: 'tr',
     initialize: function() {
-        this.template = _.template($('.track_template').html)
+        this.template = _.template($('.track_template').html());
     },
     render: function() {
-        this.$el.html(this.template(this.model.toJSON()))
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
     }
 });
  // Backbone View for a Playlist of Tracks
@@ -50,19 +49,22 @@ let PlaylistView = Backbone.View.extend({
     model: playlists,
     el: $('.playList'),
     initialize: function() {
-        this.model.on('add', this.render(), this);
+        this.model.on('add', this.render, this);
     },
     render: function() {
         let self = this;
-        this.$el('');
-        _.each(this.model.toArray(), function(track){
-          self.$el.append((new TrackView({model: track})).render().$el);
+        this.$el.html('');
+        _.each(this.model.toArray(), function(track) {
+          self.$el.append((new TrackView({ model: track })).render().$el);
         });
+        return this;
     }
 });
 
+let playlistView  = new PlaylistView();
+
 $(document).ready(function() {
-    $('.add_track').on('click',function() {
+    $('.add_track').on('click', function() {
         let track = new Track({
             trackNumber: $('.track_input').val(),
             name: $('.name_input').val(),
@@ -70,6 +72,6 @@ $(document).ready(function() {
             by: $('.by_input').val()
         });
         console.log(track.toJSON());
-        
+        playlists.add(track);
     })
-})
+});

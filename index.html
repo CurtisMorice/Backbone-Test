@@ -6,14 +6,8 @@
         <title>Sisyphus Test</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="libs/lib.jquery.min.js"></script>
-        <script src="libs/lib.underscore.js"></script>
-        <script src="libs/lib.backbone.min.js"></script>
-        <script src="scripts.js"></script>
-        
-        
-    
     </head>
+
     <body>
        
      <div class="container">
@@ -37,15 +31,11 @@
                     <td><button class="btn btn-primary add_track">Add</button></td>
                 </tr>
             </thead>
-            <tbody class="playList">
-                <tr>
-                    <td>
-
-                    </td>
-                </tr>
+            <tbody class="playList"> 
             </tbody>
          </table>
-
+     </div>
+     <!-- <div class="container">
          <table class="table">
             <thead>
                 <tr>
@@ -54,17 +44,21 @@
             </thead>
          </table>
          
-     </div>
-     <script type="text/template" class="track_template">
-        <td><span class="track"><%= track %></span></td>
-        <td><span class="name"><%= name %></span></td>
-        <td><span class="description"><%= description %></span></td>
-        <td><span class="by"><%= by %></span></td>
-        <td><button class="btn btn-warning edit-track">Edit</button> 
-            <button class="btn btn-danger delete-track">Delete</button>
-        </td> 
+     </div> -->
+        <script type="text/template" class="track_template">
+            <td><span class="track"> <%= trackNumber %> </span></td>
+            <td><span class="name"> <%= name %> </span></td>
+            <td><span class="description"> <%= description %> </span></td>
+            <td><span class="by"> <%= by %> </span></td>
+            <td><button class="btn btn-warning edit-track">Edit</button> 
+                <button class="btn btn-danger delete-track">Delete</button>
+            </td> 
 
-    </script>
-        
+        </script>
+        <script src="libs/lib.jquery.min.js"></script>
+        <script src="libs/lib.underscore.js"></script>
+        <script src="libs/lib.backbone.min.js"></script>
+        <script src="scripts.js"></script>
+            
     </body>
 </html>
