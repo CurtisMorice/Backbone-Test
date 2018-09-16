@@ -40,8 +40,10 @@ let TrackView = Backbone.View.extend({
     },
     events: {
         'click .edit_track': 'edit',
+        'click .delete_track': 'delete',
         'click .update_track': 'update',
-
+        'click .cancel': 'cancel',
+        
 
     },
     edit: function(){
@@ -62,24 +64,34 @@ let TrackView = Backbone.View.extend({
      
 
     },
+    cancel: function() {
+        playlistView.render();
+    },
     update: function(){
-        this.model.set('image', $('image_update').val());
-        this.model.set('name', $('.name_update').val());
-        this.model.set('description', $('.description_update').val());
-        this.model.set('by', $('.by_update').val());
-
-    }
+        this.model.set({
+        'image':        this.$('image_update').val(),
+        'name':         this.$('.name_update').val(),
+        'description':  this.$('.description_update').val(),
+        'by':           this.$('.by_update').val()
+        });
+    },
+    delete: function(){
+        this.model.destroy();
+    },
     render: function() {
         this.$el.html(this.template(this.model.toJSON()));
         return this;
-    }
+    },
 });
  // Backbone View for a Playlist of Tracks
 let PlaylistView = Backbone.View.extend({
     model: playlists,
     el: $('.playList'),
     initialize: function() {
+        let self = this;
         this.model.on('add', this.render, this);
+        this.model.on('change',this.render, this);
+        this.model.on('remove', this.render, this);
     },
     render: function() {
         let self = this;
