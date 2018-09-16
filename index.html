@@ -17,14 +17,14 @@
          <table class="table">
             <thead>
                 <tr>
-                    <th>Track</th>
-                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Track Name</th>
                     <th>Description</th>
                     <th>By:</th>
                     <th>Action</th>
                 </tr>
                 <tr>
-                    <td><input class="form-control track_input"></td>
+                    <td><input class="form-control image_input" type="file" accept="image/*"></td>
                     <td><input class="form-control name_input"></td>
                     <td><input class="form-control description_input"></td>
                     <td><input class="form-control by_input"></td>
@@ -35,23 +35,16 @@
             </tbody>
          </table>
      </div>
-     <!-- <div class="container">
-         <table class="table">
-            <thead>
-                <tr>
-                    <th>Up Next</th>
-                </tr>
-            </thead>
-         </table>
-         
-     </div> -->
+   
         <script type="text/template" class="track_template">
-            <td><span class="track"> <%= trackNumber %> </span></td>
+            <td><span class="image"> <%= image %> </span></td>
             <td><span class="name"> <%= name %> </span></td>
             <td><span class="description"> <%= description %> </span></td>
             <td><span class="by"> <%= by %> </span></td>
-            <td><button class="btn btn-warning edit-track">Edit</button> 
-                <button class="btn btn-danger delete-track">Delete</button>
+            <td><button class="btn btn-warning edit_track">Edit</button> 
+                <button class="btn btn-danger delete_track">Delete</button> 
+                <button class="btn btn-success update_track" style="display:none">Update</button>
+                <button class="btn btn-danger cancel" style="display:none">Cancel</button>
             </td> 
 
         </script>
